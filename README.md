@@ -9,7 +9,7 @@ Set of three NLP-related exercises.
 * In the second example,
 a base NER Bert model is further trained on some data to fine tune it. Here is a graph of the training and validation losses:
 
-![alt text](https://github.com/[pataata]/[NLP_Homework]/blob/[main]/train_eval_loss.png?raw=true)
+![Image in src folder](https://github.com/pataata/NLP_Homework/blob/main/src/train_eval_loss.png?raw=true)
 
 In the third example, both amazon and google APIs are implemented in python for using and comparing both translation services. The comparison is done with a 100 sample spanish to english dataset, computing the average BLEU score for the predictions of each model.
 
