@@ -1,10 +1,10 @@
 # NLP_Tasks
 
-Basic sentiment analysis model, NER model and use of google and amazon APIs for translation services.
+Basic sentiment analysis model, NER model and spanish to english Translation model all included in a module.
 
 ## Description
 
-Set of three NLP-related tasks in one file
+Set of three NLP-related tasks
 * Class for setting up a pre-trained sentiment analysis model from hugging
 * Functions for further training a base Bert model form hugging, dslim/bert-base-NER , on some data included in the repo. Here the a graph if the training and validation losses with 1000 training samples and 150 validation samples:
 
