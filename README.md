@@ -1,6 +1,6 @@
 # NLP_Tasks
 
-Basic sentiment analysis model, NER model and spanish to english Translation model all included in a module.
+Basic sentiment analysis model, NER model and Spanish-to-english Translation model all included in a module.
 
 ## Description
 
