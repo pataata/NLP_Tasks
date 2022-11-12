@@ -5,12 +5,12 @@ Basic sentiment analysis model, NER model and Spanish-to-english Translation mod
 ## Description
 
 Set of three NLP-related tasks
-* Class for setting up the **cardiffnlp/twitter-roberta-base-sentiment** pre-trained sentiment analysis model from hugging. 20 line example in the run.py file.
-* Functions for further training a base Bert model form hugging **dslim/bert-base-NER**  on some data included in the repo. Here the a graph if the training and validation losses with 1000 training samples and 150 validation samples:
+* Class for setting up the **cardiffnlp/twitter-roberta-base-sentiment** pre-trained sentiment analysis model from Hugging Face. 20 line example in the run.py file.
+* Functions for further training a base Bert model form hugging **dslim/bert-base-NER**  on the **wikiann en** dataset from Hugging Face. Here the a graph if the training and validation losses with 1000 training samples and 150 validation samples:
 
 ![Image in src folder](https://github.com/pataata/NLP_Homework/blob/main/src/train_eval_loss.png?raw=true)
 
-* Translator class with the option of using either amazon or google API for translating spanish to english also e comparison is done with 100 samples of a spanish to english dataset, computing the average BLEU score for the predictions of each model. The BLEU score prediction function is included in *function.py*
+* Translator class with the option of using either amazon or google API for translating spanish to english also e comparison is done with 100 samples of a spanish to english dataset localy saved, computing the average BLEU score for the predictions of each model. The BLEU score prediction function is included in *function.py*
 
 File: **src/functions.py**
 
