@@ -1,4 +1,4 @@
-# NLP_Homework
+# NLP_Tasks
 
 Basic sentiment analysis model, NER model and use of google and amazon APIs for translation services.
 
@@ -37,7 +37,7 @@ Tests:
 
 To run tests, from the root dir of the repo, call: 
 ```
-python -m pytest tests
+python tests.py
 ```
 
 ## Authors
