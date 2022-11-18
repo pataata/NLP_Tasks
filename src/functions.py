@@ -8,21 +8,27 @@ from dotenv import load_dotenv
 from nltk.translate.bleu_score import sentence_bleu
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer, DataCollatorForTokenClassification
 
+
+"""
+functions.py is a too-general name for a file!
+better to split up into to files for each functionality (task) so that everything logically related is grouped together.
+makes it much easier for your co-workers or team members to read and maintain! 
+"""
 # ----------------- Task 1 -----------------------
 
 def read_file_lines(filename):
     with open(filename, 'r') as f:
-        text = f.readlines()
-        f.close()
-    return text
+        return f.readlines()
+        # more info about file closing: https://www.programiz.com/python-programming/file-operation
 
-class pretrained_sentiment_analysis:
+
+class pretrained_sentiment_analysis: # naming should follow the rules here: https://visualgit.readthedocs.io/en/latest/pages/naming_convention.html
     def __init__(self):
-        model_name = "cardiffnlp/twitter-roberta-base-sentiment"
+        model_name = "cardiffnlp/twitter-roberta-base-sentiment" # constant at top of file: https://www.ceos3c.com/python/python-constants/
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
-    def predict(self,input_text):
+    def predict(self, input_text):
         encoded_input = self.tokenizer(input_text, return_tensors='pt')
         output = self.model(**encoded_input)
         scores = output[0][0].detach().numpy()
@@ -41,7 +47,7 @@ class pretrained_sentiment_analysis:
         return prediction
 
 # ----------------- Task 2 -----------------------
-
+# put these into an NERTrainer class with the related code from run.py!
 def load_wikiann(n_samples_train="", n_samples_val="", n_samples_test=""):
     """
     load wikiann dataset with custom number of rows for each section
@@ -142,16 +148,19 @@ region = os.getenv("REGION_NAME")
 # Google authentication
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'private_key.json'
 
-class translator:
+class translator: # naming: Translator
+    # Add comment that company has to be one of [Google, Amazon]
     def __init__(self,company):
         self.company = company
         if company == 'Google':
             self.client = Gtranslate.Client()
         elif company == 'Amazon':
             self.client = boto3.client('translate', region_name=region)
+        # throw an error if neither, otherwise this will silently fail, better to do it here on init than later! 
     
     def translate(self,text,source,target="en"):
         if self.company == 'Google':
+            # nit but I would actually initialize here the client. the reason is that it's kind of an antipattern to have a self.client with different behavior depending upon which instantiation! 
             result = self.client.translate(text, target_language=target)
             return result['translatedText']
         elif self.company == 'Amazon':
@@ -162,8 +171,16 @@ class translator:
             )
             return result['TranslatedText']
         else:
-            print('A valid company was not especified')
+            print('A valid company was not specified')
             return 0
+
+        
+# Dont need to do this for the homework, but just FYI and as a way to improve your code in general: 
+# https://docs.python.org/3/library/typing.html
+# Adding typing can really help with catching small errors! 
+# 
+# Also, using black for autoformatting: 
+# https://pypi.org/project/black/
 
 def get_bleu(pred,test):
     pred = [pred.split()]
