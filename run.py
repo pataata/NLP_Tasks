@@ -3,22 +3,27 @@
 # Date: 11/11/2022
 # Title: Set of three NLP-related tasks using python.
 
-import src.functions as f
+import src.functions as f # single letter names like this are discouraged: https://docs.quantifiedcode.com/python-anti-patterns/maintainability/using_single_letter_as_variable_name.html
 from transformers import AutoModelForTokenClassification
-
+"""
+ It’s best practice to have your code in a descriptive method or small class, if possible, rather than running at the top-level.
+ makes it easier for other modules to import the functionality later if needed! 
+ 
+ So I would recommend three small files/classes which have either small classes or descriptive functions inside! 
+"""
 # 1. Warm up: Out of the Box Sentiment Analysis
 print("PART 1", end="\n")
 
 # Read file
 filename = './datasets/tiny_movie_reviews_dataset.txt'
-content = f.read_file_lines(filename)
+documents = f.read_file_lines(filename)
 
 # Set up model
 sentiment_analysis_model = f.pretrained_sentiment_analysis()
 
 # Make predictions
-for i in range(len(content)):
-  print(sentiment_analysis_model.predict(content[i]))
+for doc in documents: 
+  print(sentiment_analysis_model.predict(doc))
 
 # 2. NER: Take a basic, pretrained NER model, and train further on a task-specific dataset
 print("PART 2", end="\n")
@@ -38,6 +43,7 @@ dataset = dataset.map(f.tokenize_adjust_labels, batched=True)
 model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
 f.train_model(batch_size,epochs,model,dataset,True)
 
+# where is the plotting code?
 
 # 3. Set up and compare model performance of two different translation models
 print("PART 3", end="\n")
@@ -55,7 +61,7 @@ sum_bleu_google = 0
 sum_bleu_amazon = 0
 
 # Variables
-n_iterations = 100
+n_iterations = 100 # constants like this should be at the top in all caps! Naming upper: https://www.ceos3c.com/python/python-constants/
 source = 'es'
 
 # Test 100 lines
