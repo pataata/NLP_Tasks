@@ -1,5 +1,12 @@
 from src import functions as f
 from transformers import AutoModelForTokenClassification
+"""
+Tests should use "assert" to check  that the functionality/outputs are as expected, not just that the code runs! 
+When writing code, I write the test for each class or piece of functionality as soon as I finish that piece.
+It helps you develop incrementally, being sure that each piece of code is clean and works like you expect it to! 
+for tests, best practices are to have a structure like this: 
+https://stackoverflow.com/questions/1896918/running-unittest-with-typical-test-directory-structure
+"""
 
 # Test 1. Read a file
 print('-------- test 1 --------',end='\n\n')
