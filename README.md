@@ -12,7 +12,7 @@ Set of three NLP-related tasks
 
 * Translator class with the option of using either amazon or google API for translating spanish to english also e comparison is done with 100 samples of a spanish to english dataset localy saved, computing the average BLEU score for the predictions of each model. The BLEU score prediction function is included in *function.py*
 
-File: **src/functions.py**
+Files: **src/SentimentAnalysisModel.py, src/NERTrainer, src/Translator**
 
 ### Installing
 ```
